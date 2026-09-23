@@ -7,7 +7,7 @@
 <title>Brief Master 3000 – 120×600</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{width:100%;height:100%;background:#1a1a24;display:flex;align-items:center;justify-content:center}
+html,body{width:100%;height:100%;background:#111217;display:flex;align-items:center;justify-content:center}
 #banner{
   position:relative;
   display:block;
@@ -17,46 +17,61 @@ html,body{width:100%;height:100%;background:#1a1a24;display:flex;align-items:cen
   overflow:hidden;
   cursor:pointer;
   text-decoration:none;
-  box-shadow:0 10px 30px rgba(0,0,0,0.5);
+  box-shadow:0 12px 36px rgba(0,0,0,0.6);
+  user-select:none;
 }
 .background{
   position:absolute;
   inset:0;
   width:120px;
   height:600px;
-  object-fit:cover;
-  opacity:0.25;
+  pointer-events:none;
 }
-.logo{
+.logo-container{
   position:absolute;
   top:45px;
   left:10px;
   width:100px;
-  height:auto;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
   transform-origin:50% 50%;
   opacity:0;
 }
+.logo-icon{
+  width:84px;
+  height:52px;
+}
+.logo-text{
+  margin-top:6px;
+  color:#fff;
+  font-family:"Arial Black",Impact,sans-serif;
+  font-size:8.5px;
+  letter-spacing:0.8px;
+  text-align:center;
+  white-space:nowrap;
+  text-shadow:0 1px 3px rgba(0,0,0,0.4);
+}
 .message{
   position:absolute;
-  top:230px;
-  left:5px;
-  right:5px;
+  top:200px;
+  left:6px;
+  right:6px;
   display:flex;
   flex-direction:column;
   align-items:center;
   text-align:center;
 }
 .line-one{
-  min-height:36px;
-  color:#fff;
+  color:rgba(255,255,255,0.95);
   font-family:"Arial Black",Impact,sans-serif;
   font-size:11px;
   font-weight:900;
-  line-height:1.2;
+  line-height:1.25;
   letter-spacing:-0.2px;
   text-transform:uppercase;
-  text-shadow:0 2px 4px rgba(0,0,0,0.6);
-  white-space:pre-line;
+  text-shadow:0 2px 4px rgba(0,0,0,0.5);
+  min-height:30px;
 }
 .glyph{
   display:inline-block;
@@ -64,53 +79,59 @@ html,body{width:100%;height:100%;background:#1a1a24;display:flex;align-items:cen
 }
 .line-two{
   display:block;
-  margin-top:20px;
+  margin-top:24px;
   color:#fff;
   font-family:"Arial Black",Impact,sans-serif;
   font-size:24px;
   font-weight:900;
   line-height:1;
-  letter-spacing:-1px;
+  letter-spacing:-0.8px;
   text-transform:uppercase;
   opacity:0;
-  text-shadow:0 0 10px #705df2, 0 2px 4px rgba(0,0,0,0.8);
 }
 .cta{
   position:absolute;
   left:10px;
   right:10px;
-  bottom:24px;
-  height:34px;
+  bottom:26px;
+  height:36px;
   display:flex;
   align-items:center;
   justify-content:center;
   border-radius:4px;
   background:#fff;
   color:#312783;
-  font-family:Arial,sans-serif;
-  font-size:11px;
-  font-weight:800;
-  letter-spacing:0.3px;
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:10.5px;
+  font-weight:900;
+  letter-spacing:0.4px;
   text-transform:uppercase;
   opacity:0;
-  box-shadow:0 4px 12px rgba(0,0,0,0.3);
+  box-shadow:0 4px 14px rgba(0,0,0,0.35);
+  transition:background-color 0.2s ease;
+}
+#banner:hover .cta{
+  background:#f4f1ff;
 }
 </style>
 </head>
 <body>
 <a id="banner" href="javascript:void(0)" onclick="handleClick()" aria-label="Jetzt briefen">
-  <!-- Inline SVG Background -->
+  <!-- Static Background -->
   <svg class="background" viewBox="0 0 120 600" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="60" cy="100" r="180" fill="#4437a8"/>
-    <circle cx="60" cy="520" r="140" fill="#231b66"/>
+    <circle cx="60" cy="110" r="160" fill="#4336aa" fill-opacity="0.6"/>
+    <circle cx="60" cy="510" r="130" fill="#201859" fill-opacity="0.8"/>
   </svg>
 
-  <!-- Vector Logo replacing broken WebP string -->
-  <svg class="logo" viewBox="0 0 104 70" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect width="104" height="70" rx="8" fill="rgba(255,255,255,0.08)"/>
-    <path d="M22 25 L52 42 L82 25" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-    <rect x="22" y="25" width="60" height="32" rx="3" stroke="#fff" stroke-width="3" fill="none"/>
-  </svg>
+  <!-- Logo (BRIEFMASTER 3000) -->
+  <div class="logo-container">
+    <svg class="logo-icon" viewBox="0 0 100 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100" height="68" rx="8" fill="rgba(255,255,255,0.08)"/>
+      <path d="M20 23 L50 41 L80 23" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect x="20" y="23" width="60" height="32" rx="3" stroke="#fff" stroke-width="3" fill="none"/>
+    </svg>
+    <span class="logo-text">BRIEFMASTER 3000</span>
+  </div>
 
   <span class="message">
     <span class="line-one"></span>
@@ -125,7 +146,7 @@ window.clickTag = window.clickTag || "https://example.com";
 function handleClick(){ window.open(window.clickTag, "_blank"); }
 
 (function(){
-  const logo = document.querySelector(".logo");
+  const logo = document.querySelector(".logo-container");
   const lineOne = document.querySelector(".line-one");
   const lineTwo = document.querySelector(".line-two");
   const cta = document.querySelector(".cta");
@@ -144,37 +165,100 @@ function handleClick(){ window.open(window.clickTag, "_blank"); }
 
   const glyphs = Array.from(document.querySelectorAll(".glyph"));
 
-  // Logo intro
+  // ==========================================
+  // PHASE 1: Logo Impact (0.0s – 1.5s)
+  // Pops in with elastic overshoot: 80% -> 105% -> 100%
+  // ==========================================
   logo.animate([
-    { opacity: 0, transform: "scale(0.8)" },
-    { opacity: 1, transform: "scale(1)" }
-  ], { duration: 800, delay: 100, fill: "forwards", easing: "ease-out" });
-
-  // Letter reveal
-  glyphs.forEach(function(glyph, i){
-    glyph.animate([
-      { opacity: 0, transform: "translateY(4px)" },
-      { opacity: 1, transform: "translateY(0)" }
-    ], { duration: 160, delay: 900 + (i * 45), fill: "forwards" });
+    { opacity: 0, transform: "scale(0.8)", offset: 0 },
+    { opacity: 1, transform: "scale(1.05)", offset: 0.65 },
+    { opacity: 1, transform: "scale(0.99)", offset: 0.85 },
+    { opacity: 1, transform: "scale(1)", offset: 1 }
+  ], {
+    duration: 1100,
+    delay: 100,
+    easing: "cubic-bezier(0.2, 0.85, 0.25, 1)",
+    fill: "forwards"
   });
 
-  // "IN GUT" Punch
+  // ==========================================
+  // PHASE 2: Text Delivery & Punchline (1.5s – 4.0s)
+  // ==========================================
+  
+  // Line 1: Typewriter / Teletext flicker effect (starts at 1.5s)
+  glyphs.forEach(function(glyph, i){
+    glyph.animate([
+      { opacity: 0, transform: "translateX(-1px)", filter: "brightness(2)" },
+      { opacity: 0.35, transform: "translateX(1px)", filter: "brightness(0.7)" },
+      { opacity: 1, transform: "translateX(0)", filter: "brightness(1)" }
+    ], {
+      duration: 110,
+      delay: 1500 + (i * 32),
+      easing: "steps(2, end)",
+      fill: "forwards"
+    });
+  });
+
+  // 1-Second Pause:
+  // Glyph typing finishes around ~2.2s. 
+  // Line 2 waits until 3.2s to trigger (~1.0s deliberate reading pause).
+
+  // Line 2: "IN GUT" heavy drop-in + neon flash
   lineTwo.animate([
-    { opacity: 0, transform: "scale(1.4)", filter: "blur(4px)" },
-    { opacity: 1, transform: "scale(1)", filter: "blur(0)" }
-  ], { duration: 400, delay: 2200, fill: "forwards", easing: "cubic-bezier(0.18, 0.89, 0.32, 1.28)" });
+    { 
+      opacity: 0, 
+      transform: "scale(1.8) translateY(-10px)", 
+      filter: "brightness(3)",
+      textShadow: "0 0 25px #fff, 0 0 35px #a899ff",
+      offset: 0 
+    },
+    { 
+      opacity: 1, 
+      transform: "scale(0.94) translateY(2px)", 
+      filter: "brightness(1.8)",
+      textShadow: "0 0 16px #9d8aff, 0 2px 4px rgba(0,0,0,0.8)",
+      offset: 0.6 
+    },
+    { 
+      opacity: 1, 
+      transform: "scale(1) translateY(0)", 
+      filter: "brightness(1)",
+      textShadow: "0 0 10px #8f7dff, 0 2px 4px rgba(0,0,0,0.8)",
+      offset: 1 
+    }
+  ], {
+    duration: 400,
+    delay: 3200,
+    easing: "cubic-bezier(0.16, 1, 0.3, 1)",
+    fill: "forwards"
+  });
 
-  // CTA Button fade in + pulsing
+  // ==========================================
+  // PHASE 3: Call to Action Focus (4.0s – 6.5s+)
+  // ==========================================
+  
+  // Button slides up smoothly by ~20px (ease-out at 4.0s)
   cta.animate([
-    { opacity: 0, transform: "translateY(10px)" },
+    { opacity: 0, transform: "translateY(20px)" },
     { opacity: 1, transform: "translateY(0)" }
-  ], { duration: 500, delay: 2800, fill: "forwards" });
+  ], {
+    duration: 550,
+    delay: 4000,
+    easing: "cubic-bezier(0.16, 1, 0.3, 1)",
+    fill: "forwards"
+  });
 
+  // Idle Loop: Gently pulses (scales up by 3-4% every 2 seconds with purple shadow glow)
   cta.animate([
-    { transform: "scale(1)" },
-    { transform: "scale(1.04)", offset: 0.5 },
-    { transform: "scale(1)" }
-  ], { duration: 1800, delay: 3500, iterations: Infinity, easing: "ease-in-out" });
+    { transform: "scale(1)", boxShadow: "0 4px 14px rgba(0,0,0,0.35)", offset: 0 },
+    { transform: "scale(1.035)", boxShadow: "0 4px 20px rgba(143,125,255,0.7)", offset: 0.5 },
+    { transform: "scale(1)", boxShadow: "0 4px 14px rgba(0,0,0,0.35)", offset: 1 }
+  ], {
+    duration: 2000,
+    delay: 4600,
+    iterations: Infinity,
+    easing: "ease-in-out"
+  });
 })();
 </script>
 </body>
